@@ -1,0 +1,24 @@
+/* 自定义滚动条样式 */
+:root {
+    /* 滚动条尺寸 */
+    --scrollbar-size: 8px;
+    /* 滚动条颜色 */
+    --scrollbar-thumb-color: rgba(119, 121, 126, 0.3);
+    /* 滚动条轨道颜色 */
+    --scrollbar-track-color: white;
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--scrollbar-size);
+    background-color: var(--scrollbar-thumb-color);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+    border-radius: calc(var(--scrollbar-size) / 2);
+}
