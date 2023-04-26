@@ -22,3 +22,11 @@
     background: var(--scrollbar-track-color);
     border-radius: calc(var(--scrollbar-size) / 2);
 }
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #42b983 !important;
+}
