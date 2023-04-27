@@ -101,5 +101,39 @@
 <script src="https://cdn.staticfile.org/prism/1.25.0/components/prism-docker.min.js"></script>
 <!-- emoji plugin -->
 <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+<!-- gitalk comment plugin -->
+<script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+    let title = location.hash.match(/#(.*?)([?]|$)/)
+    if (title) {
+        title = location.hash.match(/#(.*?)([?]|$)/)[1]
+    }
+    if (title) {
+        title = decodeURI(title.substring(1, title.length))
+        if (title.length >= 50) {
+            title = title.substring(title.length - 50, title.length)
+        }
+    } else {
+        title = 'home page'
+    }
+    const gitalk = new Gitalk({
+        clientID: '7bd02bf41aeb5e5382d9',
+        clientSecret: 'c02a3f09662ab8e29ce9a751694cd8df6a61e152',
+        repo: 'zhangjiwei1221.github.io',
+        owner: 'zhangjiwei1221',
+        admin: ['zhangjiwei1221'],
+        id: title,
+        // facebook-like distraction free mode
+        distractionFreeMode: false
+    })
+
+    // 监听 url 中 hash的变化，解决重复使用一个 gitalk 评论 issues 的问题 bug
+    window.onhashchange = function (event) {
+        if (event.newURL.split('?')[0] !== event.oldURL.split('?')[0]) {
+            location.reload()
+        }
+    }
+</script>
 </body>
 </html>
