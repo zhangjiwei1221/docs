@@ -104,26 +104,15 @@
 <!-- gitalk comment plugin -->
 <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
 <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="static/js/md5.js"></script>
 <script>
-    let title = location.hash.match(/#(.*?)([?]|$)/)
-    if (title) {
-        title = location.hash.match(/#(.*?)([?]|$)/)[1]
-    }
-    if (title) {
-        title = decodeURI(title.substring(1, title.length))
-        if (title.length >= 50) {
-            title = title.substring(title.length - 50, title.length)
-        }
-    } else {
-        title = 'home page'
-    }
     const gitalk = new Gitalk({
         clientID: '7bd02bf41aeb5e5382d9',
         clientSecret: 'c02a3f09662ab8e29ce9a751694cd8df6a61e152',
         repo: 'zhangjiwei1221.github.io',
         owner: 'zhangjiwei1221',
         admin: ['zhangjiwei1221'],
-        id: title,
+        id: md5(location.href),
         // facebook-like distraction free mode
         distractionFreeMode: false
     })
